@@ -1,12 +1,5 @@
 import { Button } from "@/components/Button";
-import {
-  ArrowRight,
-  Github,
-  Linkedin,
-  Facebook,
-  ChevronDown,
-  Download,
-} from "lucide-react";
+import { ArrowRight, Github, Linkedin, Download } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import profileImg from "@/assets/img1.png";
 
@@ -14,12 +7,13 @@ const skills = [
   "JavaScript",
   "React",
   "TypeScript",
-  "Node.js",
   "Python",
   "Django",
+  "Django REST Framework",
   "Tailwind CSS",
   "HTML",
   "SQL",
+  "PostgreSQL",
   "Git",
   "GitHub",
 ];
@@ -42,26 +36,30 @@ export const Hero = () => {
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Crafting <span className="text-primary glow-text">digital</span>
+                Building{" "}
                 <br />
-                experiences with
+                <span className="text-primary glow-text">full stack</span>
+                <br />
+                apps crafted
                 <br />
                 <span className="font-serif italic font-normal text-white">
-                  precision.
+                  with purpose.
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi I'm James - a full stack developer who builds responsive,
-                accessible, and performant web applications.
+                Hi I'm James — a full stack developer who builds and deploys
+                responsive, scalable web applications from frontend to backend.
               </p>
             </div>
 
             {/* CTA */}
             <div className="flex flex-wrap gap-4 animate-fade-in animation-delay-300">
-              <Button size="lg" href="#contact">
-                Contact Me
-                <ArrowRight className="w-5 h-5" />
-              </Button>
+              <a href="#contact">
+                <Button size="lg">
+                  Contact Me
+                  <ArrowRight className="w-5 h-5" />
+                </Button>
+              </a>
               <AnimatedBorderButton>
                 <Download className=" w-5 h-5" />
                 Download CV
@@ -73,9 +71,11 @@ export const Hero = () => {
               <span className="text-sm text-muted-foreground">Follow me:</span>
 
               {[
-                { icon: Github, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Facebook, href: "#" },
+                { icon: Github, href: "https://github.com/jamescastro-dev" },
+                {
+                  icon: Linkedin,
+                  href: "https://www.linkedin.com/in/james-carl-castro-7828a2392",
+                },
               ].map((social, idx) => (
                 <a
                   key={idx}
@@ -144,17 +144,6 @@ export const Hero = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2
-    animate-fade-in animation-delay-800">
-        <a
-          href="#about"
-          className="flex flex-col items-center text-muted-foreground hover:text-foreground">
-          <span className="text-xs uppercase tracking-wider">Scroll</span>
-          <ChevronDown className="w-6 h-6 animate-bounce" />
-        </a>
       </div>
     </section>
   );

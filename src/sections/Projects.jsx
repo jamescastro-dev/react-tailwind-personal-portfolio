@@ -1,33 +1,32 @@
 import { ArrowUpRight } from "lucide-react";
-import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
+import personalportflio from "@/assets/personal-portfolio.png";
+import bookinventory from "@/assets/book-inventory.png";
+import capstone from "@/assets/capstone.png";
 
 const projects = [
   {
-    title: "Project 1",
-    description: "A brief description of the first project.",
-    image: "/project1.png",
-    tags: ["React", "Node.js", "MongoDB"],
+    title: "Book Inventory System",
+    description:
+      "A full stack web application for managing book collections. Features JWT authentication, CRUD operations, image uploads via Cloudinary, and a REST API backend.",
+    image: bookinventory,
+    tags: ["React", "Django", "PostgreSQL", "Cloudinary", "Tailwind CSS"],
+    link: "https://book-inventory-wheat.vercel.app",
+  },
+  {
+    title: "Personal Portfolio",
+    description:
+      "A personal developer portfolio showcasing my projects and skills. Built with a modern dark theme, smooth animations, and fully responsive design.",
+    image: personalportflio,
+    tags: ["React", "Tailwind CSS", "Vite"],
     link: "#",
   },
   {
-    title: "Project 2",
-    description: "A brief description of the second project.",
-    image: "/project2.png",
-    tags: ["Vue.js", "Express", "PostgreSQL"],
-  },
-  {
-    title: "Project 3",
-    description: "A brief description of the third project.",
-    image: "/project3.png",
-    tags: ["Angular", "Firebase", "TypeScript"],
-    link: "#",
-  },
-  {
-    title: "Project 4",
-    description: "A brief description of the fourth project.",
-    image: "/project4.png",
-    tags: ["React", "Next.js", "Tailwind CSS"],
-    link: "#",
+    title: "Web-Based Appointment System",
+    description:
+      "A capstone project — a web-based appointment system that allows users to book, manage, and track appointments efficiently.",
+    image: capstone,
+    tags: ["HTML", "CSS", "JavaScript", "SQL"],
+    link: "https://sta-cruz-multispeciality-hospital-home.onrender.com/index.html",
   },
 ];
 
@@ -61,7 +60,11 @@ export const Projects = () => {
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1"
+              className={`group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1 ${
+                idx === projects.length - 1 && projects.length % 2 !== 0
+                  ? "md:col-span-2 md:max-w-xl md:mx-auto w-full"
+                  : ""
+              }`}
               style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
               {/* Image */}
               <div className="relative overflow-hidden aspect-video">
@@ -113,14 +116,6 @@ export const Projects = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* View All CTA */}
-        <div className="text-center mt-12 animate-fade-in animation-dealy-500">
-          <AnimatedBorderButton>
-            View All Projects
-            <ArrowUpRight className="w-5 h-5" />
-          </AnimatedBorderButton>
         </div>
       </div>
     </section>
