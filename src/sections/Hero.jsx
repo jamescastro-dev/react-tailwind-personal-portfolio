@@ -36,8 +36,7 @@ export const Hero = () => {
             {/* Headline */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Building{" "}
-                <br />
+                Building <br />
                 <span className="text-primary glow-text">full stack</span>
                 <br />
                 apps crafted
@@ -60,10 +59,12 @@ export const Hero = () => {
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </a>
-              <AnimatedBorderButton>
-                <Download className=" w-5 h-5" />
-                Download CV
-              </AnimatedBorderButton>
+              <a href="/Castro_JamesCarl_Resume.pdf" download="Castro_JamesCarl_Resume.pdf">
+                <AnimatedBorderButton>
+                  <Download className="w-5 h-5" />
+                  Download CV
+                </AnimatedBorderButton>
+              </a>
             </div>
 
             {/* Social Links */}

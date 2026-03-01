@@ -7,9 +7,8 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { href: "https://github.com", icon: Github, label: "GitHub" },
-  { href: "https://linkedin.com", icon: Linkedin, label: "LinkedIn" },
-  { href: "https://facebook.com", icon: Facebook, label: "Facebook" },
+  { href: "https://github.com/jamescastro-dev", icon: Github, label: "GitHub" },
+  { href: "https://www.linkedin.com/in/james-carl-castro-7828a2392", icon: Linkedin, label: "LinkedIn" },
 ];
 
 export const Footer = () => {

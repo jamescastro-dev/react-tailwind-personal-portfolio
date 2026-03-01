@@ -1,147 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0f1418;
-  --color-foreground: #f0f2f5;
+  /* ── Backgrounds ── */
+  --color-background: #0a0e14;
+  --color-card: #0f1520;
+  --color-surface: #131c28;
 
-  --color-card: #141a1f;
+  /* ── Text ── */
+  --color-foreground: #e8eef5;
+  --color-muted-foreground: #5e7a95;
 
-  --color-primary: #20b2a6;
-  --color-primary-foreground: #ffffff;
+  /* ── Brand: electric cyan ── */
+  --color-primary: #00d4ff;
+  --color-primary-foreground: #000d14;
 
-  --color-secondary: #1f2830;
-  --color-secondary-foreground: #20b2a6;
+  /* ── Secondary / tinted panels ── */
+  --color-secondary: #0f1e2e;
+  --color-secondary-foreground: #38bdf8;
 
-  --color-muted: #252e37;
-  --color-muted-foreground: #7a8491;
+  /* ── Muted ── */
+  --color-muted: #152030;
 
-  --color-border: #242b32;
+  /* ── Borders ── */
+  --color-border: #1a2e42;
 
+  /* ── Accents ── */
+  --color-highlight: #f0c040;
+  --color-accent: #0072ff;
+
+  /* ── Radius ── */
   --radius: 0.75rem;
-
-  --color-highlight: #f5a623;
-  --color-surface: #1e2329;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: "Inter", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  code, kbd, pre, samp {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.875em;
   }
 
   .font-serif {
-    font-family: "Playfair Display", serif;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .font-mono {
+    font-family: "IBM Plex Mono", monospace;
+  }
+
+  .font-display {
+    font-family: "Space Grotesk", sans-serif;
   }
 }
 
 @layer components {
+  /* ── Glassmorphism ── */
   .glass {
-    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+    background-color: color-mix(in srgb, var(--color-surface) 45%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
   }
 
   .glass-strong {
-    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+    background-color: color-mix(in srgb, var(--color-surface) 78%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-border) 65%, transparent);
   }
 
   .glass,
   .glass-strong {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   }
 
+  /* ── Glow helpers ── */
   .glow-text {
-    text-shadow: 0 0 30px
-      color-mix(in srgb, var(--color-primary) 50%, transparent);
+    text-shadow:
+      0 0 20px color-mix(in srgb, var(--color-primary) 70%, transparent),
+      0 0 48px color-mix(in srgb, var(--color-primary) 25%, transparent);
   }
 
   .glow-border {
-    box-shadow: 0 0 30px
-        color-mix(in srgb, var(--color-primary) 20%, transparent),
-      inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
+    box-shadow:
+      0 0 28px color-mix(in srgb, var(--color-primary) 28%, transparent),
+      inset 0 0 18px color-mix(in srgb, var(--color-primary) 8%, transparent);
+  }
+
+  /* ── Gradient card ── */
+  .gradient-card {
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--color-primary) 10%, var(--color-surface)),
+      color-mix(in srgb, var(--color-accent) 10%, var(--color-surface))
+    );
+    border: 1px solid color-mix(in srgb, var(--color-primary) 22%, transparent);
   }
 }
 
 @layer utilities {
+  /* ── Animations ── */
   @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
   }
 
   @keyframes marquee {
-    0% {
-      transform: translateX(0%);
+    0%   { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 12px color-mix(in srgb, var(--color-primary) 30%, transparent);
     }
-    100% {
-      transform: translateX(-50%);
+    50% {
+      box-shadow: 0 0 30px color-mix(in srgb, var(--color-primary) 60%, transparent);
     }
   }
 
-  .animate-fade-in {
-    animation: fade-in 0.5s ease-out both;
-  }
+  .animate-fade-in    { animation: fade-in 0.5s ease-out both; }
+  .animate-float      { animation: float 4s ease-in-out infinite; }
+  .animate-marquee    { animation: marquee 30s linear infinite; }
+  .animate-pulse-glow { animation: pulse-glow 2.4s ease-in-out infinite; }
 
-  .animate-float {
-    animation: float 4s ease-in-out infinite;
-  }
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+  .animation-delay-600 { animation-delay: 600ms; }
+  .animation-delay-700 { animation-delay: 700ms; }
+  .animation-delay-800 { animation-delay: 800ms; }
 
-  .animate-marquee {
-    animation: marquee 30s linear infinite;
-  }
-
-  .animation-delay-100 {
-    animation-delay: 100ms;
-  }
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  .animation-delay-300 {
-    animation-delay: 300ms;
-  }
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
-  .animation-delay-500 {
-    animation-delay: 500ms;
-  }
-  .animation-delay-600 {
-    animation-delay: 600ms;
-  }
-  .animation-delay-700 {
-    animation-delay: 700ms;
-  }
-  .animation-delay-800 {
-    animation-delay: 800ms;
-  }
-
+  /* ── Animated SVG border ── */
   @keyframes animated-border {
-    0% {
-      stroke-dashoffset: 400;
-    }
-    100% {
-      stroke-dashoffset: -500;
-    }
+    0%   { stroke-dashoffset:  400; }
+    100% { stroke-dashoffset: -500; }
   }
 
   .group:hover .animated-border-path {
@@ -149,7 +170,7 @@
   }
 
   .animated-border:hover {
-    background-color: color-mix(in srgb, #26c4b8 15%, transparent);
-    box-shadow: 0 0 20px color-mix(in srgb, #26c4b8 25%, transparent);
+    background-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+    box-shadow: 0 0 22px color-mix(in srgb, var(--color-primary) 30%, transparent);
   }
 }
