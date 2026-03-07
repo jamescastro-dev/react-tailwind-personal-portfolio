@@ -1,9 +1,18 @@
 import { ArrowUpRight } from "lucide-react";
+import gymai from "@/assets/gym-ai-planner.png";
 import personalportflio from "@/assets/personal-portfolio.png";
 import bookinventory from "@/assets/book-inventory.png";
 import capstone from "@/assets/capstone.png";
 
 const projects = [
+  {
+    title: "GymAI Planner",
+    description:
+      "A full stack AI-powered workout plan generator. Features Neon Auth authentication, AI-generated personalized training plans with versioning, and a responsive UI with dynamic schedule display.",
+    image: gymai,
+    tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma", "Neon", "Tailwind CSS"],
+    link: "https://gym-ai-planner.vercel.app",
+  },
   {
     title: "Book Inventory System",
     description:

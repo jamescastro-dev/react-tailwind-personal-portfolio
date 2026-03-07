@@ -4,18 +4,22 @@ import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
 import profileImg from "@/assets/img1.png";
 
 const skills = [
-  "JavaScript",
-  "React",
+  "JavaScript (ES6+)",
   "TypeScript",
+  "React",
   "Python",
   "Django",
   "Django REST Framework",
-  "Tailwind CSS",
-  "HTML",
-  "SQL",
+  "Node.js",
+  "Express.js",
+  "Prisma ORM",
   "PostgreSQL",
+  "Tailwind CSS",
   "Git",
   "GitHub",
+  "OpenRouter API",
+  "Vercel",
+  "Railway"
 ];
 
 export const Hero = () => {
