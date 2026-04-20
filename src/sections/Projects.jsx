@@ -2,9 +2,17 @@ import { ArrowUpRight } from "lucide-react";
 import gymai from "@/assets/gym-ai-planner.png";
 import personalportflio from "@/assets/personal-portfolio.png";
 import bookinventory from "@/assets/book-inventory.png";
-import capstone from "@/assets/capstone.png";
+import smgcproperties from "@/assets/smgc-properties.png";
 
 const projects = [
+  {
+  title: "Real Estate Listings Platform",
+  description:
+    "A full stack real estate platform for browsing and managing property listings. Features property search with filters, detailed listing pages with inquiry forms, and an admin portal for managing listings and leads.",
+  image: smgcproperties,
+  tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS"],
+  link: "https://www.smgcproperties.com/",
+  },
   {
     title: "GymAI Planner",
     description:
@@ -28,14 +36,6 @@ const projects = [
     image: personalportflio,
     tags: ["React", "Tailwind CSS", "Vite"],
     link: "#",
-  },
-  {
-    title: "Web-Based Appointment System",
-    description:
-      "A capstone project — a web-based appointment system that allows users to book, manage, and track appointments efficiently.",
-    image: capstone,
-    tags: ["HTML", "CSS", "JavaScript", "SQL"],
-    link: "https://sta-cruz-multispeciality-hospital-home.onrender.com/index.html",
   },
 ];
 
