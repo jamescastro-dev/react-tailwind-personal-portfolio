@@ -24,7 +24,8 @@ const skills = [
   "GitHub",
   "OpenRouter API",
   "Vercel",
-  "Railway"
+  "Render",
+  "Responsive Design"
 ];
 
 export const Hero = () => {
@@ -90,6 +91,8 @@ export const Hero = () => {
                 <a
                   key={idx}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={`Visit my ${social.icon.name}`}
                   className="p-2 rounded-full glass hover:bg-primary/10 hover:text-primary transition-all duration-300">
                   <social.icon className="w-5 h-5" />
@@ -146,7 +149,7 @@ export const Hero = () => {
             <div className="flex animate-marquee">
               {[...skills, ...skills].map((skill, idx) => (
                 <div key={idx} className="shrink-0 px-8 py-4">
-                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+                  <span className="text-xl font-semibold text-muted-foreground/70 hover:text-muted-foreground transition-colors">
                     {skill}
                   </span>
                 </div>

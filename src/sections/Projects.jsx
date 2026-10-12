@@ -1,41 +1,97 @@
-import { ArrowUpRight } from "lucide-react";
-import gymai from "@/assets/gym-ai-planner.png";
-import personalportflio from "@/assets/personal-portfolio.png";
-import bookinventory from "@/assets/book-inventory.png";
-import smgcproperties from "@/assets/smgc-properties.png";
+import { ArrowUpRight, Github } from "lucide-react";
+import ardc from "@/assets/projects/ardc.webp";
+import smgcproperties from "@/assets/projects/smgc-properties.webp";
+import bookinventory from "@/assets/projects/book-inventory.webp";
+import gymai from "@/assets/projects/gymai-planner.webp";
+
+// Screenshots are 1280x800 (16:10). A project with no working live demo
+// leaves demoUrl out, so only the GitHub button renders.
+const IMAGE_WIDTH = 1280;
+const IMAGE_HEIGHT = 800;
 
 const projects = [
   {
-  title: "Real Estate Listings Platform",
-  description:
-    "A full stack real estate platform for browsing and managing property listings. Features property search with filters, detailed listing pages with inquiry forms, and an admin portal for managing listings and leads.",
-  image: smgcproperties,
-  tags: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS"],
-  link: "https://www.smgcproperties.com/",
+    title: "Archer Realty and Development Corporation (ARDC) Website",
+    description:
+      "A website for a real estate developer's subdivisions, with an interactive lot map (lot selection, filters, full-screen mode), house model pages, and inquiry forms for prospective buyers. Mobile-first.",
+    image: ardc,
+    imageAlt:
+      "ARDC website lot map for St. Agatha Homes Phase 5, with status filters, zoom controls, and the details panel for a selected lot.",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "PostgreSQL",
+      "Vercel",
+    ],
+    status: "Live preview, content rollout in progress",
+    featured: true,
+    demoUrl: "https://ardc-website-eight.vercel.app/",
+    demoLabel: "Live preview",
   },
   {
-    title: "GymAI Planner",
+    title: "SMGC Properties",
     description:
-      "A full stack AI-powered workout plan generator. Features Neon Auth authentication, AI-generated personalized training plans with versioning, and a responsive UI with dynamic schedule display.",
-    image: gymai,
-    tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma", "Neon", "Tailwind CSS"],
-    link: "https://gym-ai-planner.vercel.app",
+      "A full stack real estate platform for a licensed real estate broker. Features property search with buy/rent filters, detailed listing pages with inquiry forms, an admin portal for managing listings and leads, and SEO with a dynamic sitemap.",
+    image: smgcproperties,
+    imageAlt:
+      "SMGC Properties listings page with All, For Sale, and For Rent filters above a grid of property cards.",
+    tags: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Supabase",
+      "PostgreSQL",
+      "Vercel",
+    ],
+    status: "Live",
+    demoUrl: "https://www.smgcproperties.com/",
+    githubUrl: "https://github.com/jamescastro-dev/smgc-properties",
   },
   {
     title: "Book Inventory System",
     description:
       "A full stack web application for managing book collections. Features JWT authentication, CRUD operations, image uploads via Cloudinary, and a REST API backend.",
     image: bookinventory,
-    tags: ["React", "Django", "PostgreSQL", "Cloudinary", "Tailwind CSS"],
-    link: "https://book-inventory-wheat.vercel.app",
+    imageAlt:
+      "Book Inventory System library view showing a grid of book covers with a search box and an Add Book button.",
+    tags: [
+      "React",
+      "Tailwind CSS",
+      "Django",
+      "Django REST Framework",
+      "JWT",
+      "PostgreSQL",
+      "Cloudinary",
+      "Render",
+      "Vercel",
+    ],
+    status: "Live",
+    demoUrl: "https://book-inventory-wheat.vercel.app/",
+    githubUrl: "https://github.com/jamescastro-dev/book-inventory",
   },
   {
-    title: "Personal Portfolio",
+    title: "GymAI Planner",
     description:
-      "A personal developer portfolio showcasing my projects and skills. Built with a modern dark theme, smooth animations, and fully responsive design.",
-    image: personalportflio,
-    tags: ["React", "Tailwind CSS", "Vite"],
-    link: "#",
+      "A full stack AI workout planner that generates personalized plans using the OpenRouter API. Features authentication and session management with Neon Auth, and a responsive React UI backed by a Node.js, Express, and Prisma API.",
+    image: gymai,
+    imageAlt:
+      "GymAI Planner landing page with the headline \"Train smarter. Not harder.\" and Build My Plan and Sign In buttons.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "Prisma ORM",
+      "PostgreSQL (Neon)",
+      "OpenRouter API",
+    ],
+    status: "Live",
+    githubUrl: "https://github.com/jamescastro-dev/gym-ai-planner",
   },
 ];
 
@@ -60,71 +116,120 @@ export const Projects = () => {
           </h2>
           <p className="text-muted-foreground animate-fade-in animation-delay-200">
             A selection of my recent projects that highlight my expertise in
-            full stack development,
+            full stack development.
           </p>
         </div>
 
         {/* Projects Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, idx) => (
-            <div
-              key={idx}
-              className={`group glass rounded-2xl overflow-hidden animate-fade-in md:row-span-1 ${
-                idx === projects.length - 1 && projects.length % 2 !== 0
-                  ? "md:col-span-2 md:max-w-xl md:mx-auto w-full"
-                  : ""
-              }`}
-              style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
-              {/* Image */}
-              <div className="relative overflow-hidden aspect-video">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div
-                  className="absolute inset-0 bg-linear-to-t
-                         from-card via-card/50 to-transparent 
+          {projects.map((project, idx) => {
+            const isLastOdd =
+              !project.featured &&
+              idx === projects.length - 1 &&
+              (projects.length - 1) % 2 !== 0;
+            // The image links to the live demo when there is one. The button
+            // below is the accessible link, so the image link is skipped by
+            // keyboard and screen readers.
+            const Media = project.demoUrl ? "a" : "div";
+            const mediaProps = project.demoUrl
+              ? {
+                  href: project.demoUrl,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  tabIndex: -1,
+                  "aria-hidden": true,
+                }
+              : {};
+
+            return (
+              <div
+                key={project.title}
+                className={`group glass rounded-2xl overflow-hidden animate-fade-in ${
+                  project.featured
+                    ? "md:col-span-2 lg:grid lg:grid-cols-2"
+                    : isLastOdd
+                      ? "md:col-span-2 md:max-w-xl md:mx-auto w-full"
+                      : ""
+                }`}
+                style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
+                {/* Image */}
+                <Media
+                  {...mediaProps}
+                  className="relative block overflow-hidden aspect-16/10 lg:self-center">
+                  <img
+                    src={project.image}
+                    alt={project.imageAlt}
+                    width={IMAGE_WIDTH}
+                    height={IMAGE_HEIGHT}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div
+                    className="absolute inset-0 bg-linear-to-t
+                         from-card via-card/50 to-transparent
                          opacity-60"
-                />
+                  />
+                </Media>
 
-                {/* Overlay Link */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.link || "#"}
-                    className="p-3 glass rounded-full hover:bg-primary hover:text-primary-foreground transition-all">
-                    <ArrowUpRight className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                <div className="flex items-start justify-between">
-                  <h3 className="text-xl font-semibold group-hover:text-primary transitions-color">
+                {/* Content */}
+                <div
+                  className={`p-6 space-y-4 ${
+                    project.featured ? "lg:p-10 lg:flex lg:flex-col lg:justify-center" : ""
+                  }`}>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {project.featured && (
+                      <span className="terminal-badge uppercase">Featured</span>
+                    )}
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground">
+                      <span className="w-2 h-2 bg-green-500 rounded-full shrink-0" />
+                      {project.status}
+                    </span>
+                  </div>
+                  <h3
+                    className={`text-xl font-semibold group-hover:text-primary transition-colors ${
+                      project.featured ? "lg:text-2xl" : ""
+                    }`}>
                     {project.title}
                   </h3>
-                  <ArrowUpRight
-                    className="w-5 h-5 text-muted-foreground group-hover:text-primary
-                            group-hover:translate-x-1
-                            group-hover:translatey-1 transition-all"
-                  />
-                </div>
-                <p className="text-muted-foreground text-sm">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIdx) => (
-                    <span
-                      key={tagIdx}
-                      className="px-4 py-1 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300">
-                      {tag}
-                    </span>
-                  ))}
+                  <p className="text-muted-foreground text-sm">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-4 py-1 rounded-full bg-surface text-xs font-medium border border-border/50 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-300">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-wrap gap-3 pt-2">
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 min-h-11 px-5 rounded-full bg-primary text-primary-foreground text-sm font-medium shadow-lg shadow-primary/25 hover:bg-primary/90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                        {project.demoLabel ?? "Live demo"}
+                        <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 min-h-11 px-5 rounded-full glass text-sm font-medium hover:bg-primary/10 hover:text-primary transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                        <Github className="w-4 h-4" />
+                        GitHub
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
