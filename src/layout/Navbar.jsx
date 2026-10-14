@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -27,7 +28,7 @@ export const Navbar = () => {
         isScrolled ? "glass-strong py-3" : "bg-transparent py-5"
       } z-50`}
     >
-      <nav className="container mx-auto px-6 flex items-center justify-between">
+      <nav className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
@@ -61,6 +62,8 @@ export const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           className="md:hidden p-2 text-foreground cursor-pointer"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -70,7 +73,7 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden glass-strong animate-fade-in">
-          <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+          <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-6 flex flex-col gap-4">
             {navLinks.map((link, index) => (
               <a
                 key={index}

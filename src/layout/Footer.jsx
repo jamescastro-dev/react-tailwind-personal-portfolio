@@ -3,6 +3,7 @@ import { Github, Linkedin } from "lucide-react";
 const footerLinks = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
+  { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -15,7 +16,7 @@ export const Footer = () => {
   return (
     <footer className="mt-32">
       <div className="glass-strong">
-        <div className="container mx-auto px-6 py-8">
+        <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Left: Brand */}
             <div className="flex flex-col text-center md:text-left">
@@ -24,6 +25,16 @@ export const Footer = () => {
               </span>
               <span className="text-xs text-muted-foreground">
                 © {new Date().getFullYear()} James Castro. All rights reserved.
+              </span>
+              <span className="text-xs text-muted-foreground">
+                Built with React, Tailwind CSS and Vite ·{" "}
+                <a
+                  href="https://github.com/jamescastro-dev/react-tailwind-personal-portfolio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-2 hover:text-primary transition-colors">
+                  View source
+                </a>
               </span>
             </div>
 

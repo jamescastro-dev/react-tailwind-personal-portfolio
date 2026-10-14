@@ -1,7 +1,7 @@
 import { Button } from "@/components/Button";
 import { ArrowRight, Github, Linkedin, Download } from "lucide-react";
 import { AnimatedBorderButton } from "@/components/AnimatedBorderButton";
-import profileImg from "@/assets/img1.png";
+import profileImg from "@/assets/profile.webp";
 
 const skills = [
   "JavaScript (ES6+)",
@@ -32,32 +32,32 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Content */}
-      <div className="container mx-auto px-6 pt-32 pb-20 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pt-28 pb-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-md text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Full Stack Developer
+                Full-Stack Web Developer
               </span>
             </div>
 
             {/* Headline */}
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animation-delay-100">
-                Building <br />
-                <span className="text-primary glow-text">full stack</span>
-                <br />
-                apps crafted
-                <br />
+              {/* Sized so the intro and buttons stay above the fold on common laptops */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] animate-fade-in animation-delay-100">
+                <span className="text-primary glow-text">Custom</span> websites{" "}
                 <span className="font-serif italic font-normal text-white">
-                  with purpose.
+                  that turn visitors into inquiries.
                 </span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg animate-fade-in animation-delay-200">
-                Hi I'm James — a full stack developer who builds and deploys
-                responsive, scalable web applications from frontend to backend.
+                Hi, I'm James, a full-stack web developer in the Philippines. I
+                build each site around the client's business: a listings
+                platform with an admin portal for a licensed broker, and an
+                interactive lot map for a real estate developer. Fast and
+                mobile-first by default.
               </p>
             </div>
 
@@ -102,19 +102,21 @@ export const Hero = () => {
           </div>
           {/* Right Column - Image Content */}
 
-          <div className="relative animate fade-in animation-delay-300">
+          <div className="relative animate-fade-in animation-delay-300">
             {/* Profile Image */}
             <div className="relative max-w-md mx-auto">
               <div
-                className="absolute inset-0 
+                className="absolute inset-0
                   rounded-3xl bg-linear-to-br
-                  from-primary/30 via bg-transparent
+                  from-primary/30 via-transparent
                   to-primary/10 blur-xl animate-pulse"
               />
               <div className="relative glass rounded-3xl p-2 glow-border">
                 <img
                   src={profileImg}
-                  alt="James Castro"
+                  alt="Portrait of James Carl Castro"
+                  width={409}
+                  height={511}
                   className="w-full max-w-md aspect-4/5 object-cover rounded-2xl"
                 />
 
@@ -130,7 +132,7 @@ export const Hero = () => {
 
                 {/* Stats Badge */}
                 <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float">
-                  <div className="text 2xl font-bold text-primary">1+</div>
+                  <div className="text-2xl font-bold text-primary">1+</div>
                   <div className="text-xs text-muted-foreground">
                     Years exp.
                   </div>

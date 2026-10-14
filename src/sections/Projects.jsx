@@ -34,17 +34,16 @@ const projects = [
   {
     title: "SMGC Properties",
     description:
-      "A full stack real estate platform for a licensed real estate broker. Features property search with buy/rent filters, detailed listing pages with inquiry forms, an admin portal for managing listings and leads, and SEO with a dynamic sitemap.",
+      "A real estate platform for a licensed broker: property search with buy/rent filters, listing pages with inquiry forms, and an admin portal for managing listings and leads.",
     image: smgcproperties,
     imageAlt:
       "SMGC Properties listings page with All, For Sale, and For Rent filters above a grid of property cards.",
     tags: [
       "Next.js",
-      "React",
       "TypeScript",
-      "Tailwind CSS",
       "Supabase",
       "PostgreSQL",
+      "Tailwind CSS",
       "Vercel",
     ],
     status: "Live",
@@ -54,20 +53,17 @@ const projects = [
   {
     title: "Book Inventory System",
     description:
-      "A full stack web application for managing book collections. Features JWT authentication, CRUD operations, image uploads via Cloudinary, and a REST API backend.",
+      "A library app with reader and librarian roles. Readers borrow and return books; librarians add books by ISBN or barcode scan and manage loans.",
     image: bookinventory,
     imageAlt:
-      "Book Inventory System library view showing a grid of book covers with a search box and an Add Book button.",
+      "Book Inventory public catalogue with a search box, genre filters, and a grid of book covers marked Available.",
     tags: [
       "React",
-      "Tailwind CSS",
-      "Django",
       "Django REST Framework",
-      "JWT",
       "PostgreSQL",
+      "JWT",
       "Cloudinary",
-      "Render",
-      "Vercel",
+      "GitHub Actions",
     ],
     status: "Live",
     demoUrl: "https://book-inventory-wheat.vercel.app/",
@@ -76,21 +72,21 @@ const projects = [
   {
     title: "GymAI Planner",
     description:
-      "A full stack AI workout planner that generates personalized plans using the OpenRouter API. Features authentication and session management with Neon Auth, and a responsive React UI backed by a Node.js, Express, and Prisma API.",
+      "An AI workout planner that builds a personalized weekly plan from a short questionnaire. Includes a public sample plan, a nutrition calculator, and AI meal ideas.",
     image: gymai,
     imageAlt:
-      "GymAI Planner landing page with the headline \"Train smarter. Not harder.\" and Build My Plan and Sign In buttons.",
+      "GymAI Planner sample training plan page showing the goal, a 4-day upper/lower split, program notes, and the weekly schedule.",
     tags: [
       "React",
       "TypeScript",
-      "Tailwind CSS",
-      "Node.js",
       "Express.js",
       "Prisma ORM",
-      "PostgreSQL (Neon)",
       "OpenRouter API",
+      "GitHub Actions",
     ],
     status: "Live",
+    // Links to the sample plan, which works without an account.
+    demoUrl: "https://gym-ai-planner.vercel.app/sample",
     githubUrl: "https://github.com/jamescastro-dev/gym-ai-planner",
   },
 ];
@@ -101,7 +97,7 @@ export const Projects = () => {
       {/* Bg glows */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-1/4 right-0 w-64 h-46 bg-highlight/5 rounded-full blur-3xl" />
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
@@ -121,12 +117,10 @@ export const Projects = () => {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* The featured project spans the full row; the rest sit three across
+            on large screens and stack below that, so they're always equal size. */}
+        <div className="grid lg:grid-cols-3 gap-8">
           {projects.map((project, idx) => {
-            const isLastOdd =
-              !project.featured &&
-              idx === projects.length - 1 &&
-              (projects.length - 1) % 2 !== 0;
             // The image links to the live demo when there is one. The button
             // below is the accessible link, so the image link is skipped by
             // keyboard and screen readers.
@@ -146,16 +140,16 @@ export const Projects = () => {
                 key={project.title}
                 className={`group glass rounded-2xl overflow-hidden animate-fade-in ${
                   project.featured
-                    ? "md:col-span-2 lg:grid lg:grid-cols-2"
-                    : isLastOdd
-                      ? "md:col-span-2 md:max-w-xl md:mx-auto w-full"
-                      : ""
+                    ? "lg:col-span-3 lg:grid lg:grid-cols-2"
+                    : "flex flex-col"
                 }`}
                 style={{ animationDelay: `${(idx + 1) * 100}ms` }}>
                 {/* Image */}
                 <Media
                   {...mediaProps}
-                  className="relative block overflow-hidden aspect-16/10 lg:self-center">
+                  className={`relative block overflow-hidden aspect-16/10 ${
+                    project.featured ? "lg:self-center" : ""
+                  }`}>
                   <img
                     src={project.image}
                     alt={project.imageAlt}
@@ -175,7 +169,9 @@ export const Projects = () => {
                 {/* Content */}
                 <div
                   className={`p-6 space-y-4 ${
-                    project.featured ? "lg:p-10 lg:flex lg:flex-col lg:justify-center" : ""
+                    project.featured
+                      ? "lg:p-10 lg:flex lg:flex-col lg:justify-center"
+                      : "flex flex-col flex-1"
                   }`}>
                   <div className="flex flex-wrap items-center gap-2">
                     {project.featured && (
@@ -204,7 +200,7 @@ export const Projects = () => {
                       </span>
                     ))}
                   </div>
-                  <div className="flex flex-wrap gap-3 pt-2">
+                  <div className="flex flex-wrap gap-3 pt-2 mt-auto">
                     {project.demoUrl && (
                       <a
                         href={project.demoUrl}

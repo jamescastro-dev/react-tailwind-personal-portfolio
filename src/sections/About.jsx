@@ -1,39 +1,39 @@
-import { Code2, Rocket, Users, Lightbulb } from "lucide-react";
+import { Smartphone, Inbox, Gauge, ShieldCheck } from "lucide-react";
 
 const highlights = [
   {
-    icon: Code2,
-    title: "Clean Code",
+    icon: Smartphone,
+    title: "Mobile-First",
     description:
-      "Writing clean, maintainable, and efficient code following best practices and design patterns.",
+      "Layouts designed for phones first, then checked at tablet and desktop widths.",
   },
 
   {
-    icon: Rocket,
-    title: "Performance",
+    icon: Inbox,
+    title: "Built for Inquiries",
     description:
-      "Optimizing applications for speed and efficiency, ensuring smooth user experiences.",
+      "Inquiry forms, clear calls to action, and an admin portal for managing leads, so visitors can reach the business.",
   },
 
   {
-    icon: Users,
-    title: "Collaboration",
+    icon: Gauge,
+    title: "Fast and Findable",
     description:
-      "Working effectively with teams to deliver high-quality software solutions.",
+      "Optimized images, sitemaps, and page metadata so pages load quickly and show up in search.",
   },
 
   {
-    icon: Lightbulb,
-    title: "Innovation",
+    icon: ShieldCheck,
+    title: "Tested and Documented",
     description:
-      "Bringing creative ideas to life through innovative problem-solving and cutting-edge technologies.",
+      "Automated tests and CI on my recent projects, plus clear READMEs, so the work is easy to review and hand over.",
   },
 ];
 
 export const About = () => {
   return (
     <section id="about" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column */}
           <div className="space-y-8">
@@ -53,25 +53,27 @@ export const About = () => {
 
             <div className="space-y-4 text-muted-foreground animate-fade-in animation-delay-200">
               <p>
-                I'm James, a full stack developer passionate about building
-                complete web applications from the ground up. I enjoy working
-                across the entire stack — crafting intuitive user interfaces and
-                building reliable, scalable backends.
+                I'm James, a full-stack web developer who builds fast,
+                mobile-first websites that turn visitors into inquiries.
               </p>
               <p>
-                I believe great software is more than just working code. It's
-                about the details — clean architecture, smooth user experience,
-                and solutions that actually solve real problems.
+                As a freelancer, I've built two real estate websites with
+                Next.js, TypeScript, Tailwind CSS, and Supabase: a listings
+                platform with an admin portal for a licensed broker, and a site
+                with an interactive lot map for a real estate developer. Before
+                that, I was a frontend developer intern at Simplevia
+                Technologies.
               </p>
               <p>
-                I'm constantly growing as a developer, exploring new
-                technologies and approaches to build better, more impactful
-                applications.
+                I also work with Django, Node.js, and PostgreSQL, integrate AI
+                through OpenRouter, and deploy on Vercel and Render. I graduated
+                Cum Laude with a BS in Information Technology from Bulacan State
+                University.
               </p>
             </div>
 
             <div className="glass rounded-2xl p-6 glow-border animate-fade-in animation-delay-300">
-              <p className="font-lg font-medium italic text-foreground">
+              <p className="text-lg font-medium italic text-foreground">
                 "I believe the best developers never stop learning — they
                 embrace every challenge as an opportunity to grow."
               </p>

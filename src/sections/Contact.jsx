@@ -99,7 +99,7 @@ export const Contact = () => {
         <div className="absolute bottom-1/4 right-0 w-64 h-46 bg-highlight/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
         {/* Section Header */}
         <div className="text-center mx-auto max-w-3xl mb-16">
           <span className="text-secondary-foreground text-sm font-medium tracking-wider uppercase animate-fade-in">
@@ -252,6 +252,10 @@ export const Contact = () => {
                 I'm currently open to new opportunities and exciting projects.
                 Whether you need a full-time developer or a freelance
                 consultant, let's talk!
+              </p>
+              <p className="text-muted-foreground text-sm mt-3">
+                Based in the Philippines (UTC+8), 2–3 hours behind Sydney
+                depending on daylight saving.
               </p>
             </div>
           </div>
